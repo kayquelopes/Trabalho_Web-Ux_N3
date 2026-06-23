@@ -5,113 +5,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pagina Apresentação</title>
-  <link rel="stylesheet" href="../src/styles/variables.css">
-  <link rel="stylesheet" href="../src/styles/base.css">
-  <link rel="stylesheet" href="../src/styles/main.css">
-  <link rel="stylesheet" href="../src/components/tela inicial/telaInicial.css">
   <script type="module" src="../src/index.js"></script>
-
 </head>
 
 <body>
-  <main class="container-geral">
-    <div class="container-bg">
-      <div class="container-imglogo">
-        <img class="style-imglogo" src="../src/components/tela inicial/img/Logo da NextStop com bússola (2).png"
-          alt="Logo">
-      </div>
-
-      <div class="container-texto">
-        <h1 class="style-txtlogo">NextStop</h1>
-        <p class="style-tagline">Seu próximo destino começa aqui.</p>
-      </div>
-
-      <div class="container-btn">
-        <button class="style-btn">Explorer</button>
-      </div>
-    </div>
-    <div class="sobreposicao-auth" id="sobreposicaoAuth">
-      <div class="cartao-auth">
-
-        <!-- VIEW: LOGIN -->
-        <div class="tela-auth ativa" id="tela-login">
-          <div class="cabecalho-auth">
-            <img class="style-imglogo-reduzida"
-              src="../src/components/tela inicial/img/Logo da NextStop com bússola (2).png" alt="Logo">
-            <h2 class="titulo-auth">Faça login no NextStop</h2>
-          </div>
-
-          <button class="botao-google">
-            <img src="../src/components/tela inicial/img/pngegg.png" alt="">
-            Continue com o Google
-          </button>
-
-          <div class="divisor">ou</div>
-
-          <label class="rotulo-auth">E-MAIL</label>
-          <input type="email" class="campo-auth" placeholder="seuemail@exemplo.com">
-
-          <label class="rotulo-auth">SENHA</label>
-          <input type="password" class="campo-auth" placeholder="••••••••••••••">
-
-          <button class="botao-primario" id="btnFazerLogin">Fazer Login</button>
-
-          <p class="auth-trocar">Sem conta? <a href="#" id="irParaCadastroEmail">Crie um</a></p>
-        </div>
-
-        <!-- VIEW: CADASTRO - EMAIL -->
-        <div class="tela-auth" id="tela-cadastro-email">
-          <div class="cabecalho-auth">
-            <img class="style-imglogo-reduzida"
-              src="../src/components/tela inicial/img/Logo da NextStop com bússola (2).png" alt="Logo">
-            <h2 class="titulo-auth">Boas-vindas ao NextStop</h2>
-          </div>
-
-          <button class="botao-google">
-            <img src="../src/components/tela inicial/img/pngegg.png" alt="">
-            Continue com o Google
-          </button>
-
-          <div class="divisor">ou</div>
-
-          <label class="rotulo-auth">E-MAIL</label>
-          <input type="email" class="campo-auth" id="cadastroEmail" placeholder="seuemail@exemplo.com">
-
-          <button class="botao-primario" id="btnContinuarEmail">Continuar com o e-mail</button>
-
-          <p class="auth-trocar">Já tem conta? <a href="#" id="irParaLoginDoEmail">Entrar</a></p>
-        </div>
-
-        <!-- VIEW: CADASTRO - SENHA -->
-        <div class="tela-auth" id="tela-cadastro-senha">
-          <div class="cabecalho-auth">
-            <img class="style-imglogo-reduzida"
-              src="../src/components/tela inicial/img/Logo da NextStop com bússola (2).png" alt="Logo">
-            <h2 class="titulo-auth">Boas-vindas ao NextStop</h2>
-          </div>
-
-          <button class="botao-google">
-            <img src="../src/components/tela inicial/img/pngegg.png" alt="">
-            Continue com o Google
-          </button>
-
-          <div class="divisor">ou</div>
-
-          <label class="rotulo-auth">SENHA</label>
-          <input type="password" class="campo-auth" placeholder="••••••••••••••">
-
-          <label class="rotulo-auth">Confirme a senha</label>
-          <input type="password" class="campo-auth" placeholder="••••••••••••••">
-
-          <button class="botao-primario" id="btnCadastrar">Cadastrar</button>
-
-          <p class="auth-trocar">Já tem conta? <a href="#" id="irParaLoginDaSenha">Entrar</a></p>
-        </div>
-
-      </div>
-    </div>
+  <main class="container-geral" id="app">
+    <!-- O conteúdo e o CSS desta página são injetados dinamicamente
+         pelo src/index.js, com base no template/css definidos em
+         telaInicial_tpl.js -->
   </main>
-  <script src="../src/components/tela inicial/telaInicial.js"></script>
 </body>
 
 </html>

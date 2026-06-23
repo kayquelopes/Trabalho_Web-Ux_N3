@@ -1,1 +1,106 @@
+// Caminho do CSS específico desta página
+// (relativo a partir de public/index.html, pois é o <link> que será
+// inserido no <head> do documento, e não do módulo JS)
+export const telaInicialCss = "../src/components/tela inicial/telaInicial.css";
 
+// Template (HTML em string) da página "Tela Inicial"
+// Recebe o caminho base das imagens, para funcionar tanto
+// se for carregado pela raiz quanto por /public.
+export function telaInicialTpl() {
+  const imgPath = "../src/components/tela inicial/img";
+
+  return `
+    <div class="container-bg">
+      <div class="container-imglogo">
+        <img class="style-imglogo" src="${imgPath}/Logo da NextStop com bússola (2).png" alt="Logo">
+      </div>
+
+      <div class="container-texto">
+        <h1 class="style-txtlogo">NextStop</h1>
+        <p class="style-tagline">Seu próximo destino começa aqui.</p>
+      </div>
+
+      <div class="container-btn">
+        <button class="style-btn">Explorer</button>
+      </div>
+    </div>
+
+    <div class="sobreposicao-auth" id="sobreposicaoAuth">
+      <div class="cartao-auth">
+
+        <!-- VIEW: LOGIN -->
+        <div class="tela-auth ativa" id="tela-login">
+          <div class="cabecalho-auth">
+            <img class="style-imglogo-reduzida" src="${imgPath}/Logo da NextStop com bússola (2).png" alt="Logo">
+            <h2 class="titulo-auth">Faça login no NextStop</h2>
+          </div>
+
+          <button class="botao-google">
+            <img src="${imgPath}/pngegg.png" alt="">
+            Continue com o Google
+          </button>
+
+          <div class="divisor">ou</div>
+
+          <label class="rotulo-auth">E-MAIL</label>
+          <input type="email" class="campo-auth" placeholder="seuemail@exemplo.com">
+
+          <label class="rotulo-auth">SENHA</label>
+          <input type="password" class="campo-auth" placeholder="••••••••••••••">
+
+          <button class="botao-primario" id="btnFazerLogin">Fazer Login</button>
+
+          <p class="auth-trocar">Sem conta? <a href="#" id="irParaCadastroEmail">Crie um</a></p>
+        </div>
+
+        <!-- VIEW: CADASTRO - EMAIL -->
+        <div class="tela-auth" id="tela-cadastro-email">
+          <div class="cabecalho-auth">
+            <img class="style-imglogo-reduzida" src="${imgPath}/Logo da NextStop com bússola (2).png" alt="Logo">
+            <h2 class="titulo-auth">Boas-vindas ao NextStop</h2>
+          </div>
+
+          <button class="botao-google">
+            <img src="${imgPath}/pngegg.png" alt="">
+            Continue com o Google
+          </button>
+
+          <div class="divisor">ou</div>
+
+          <label class="rotulo-auth">E-MAIL</label>
+          <input type="email" class="campo-auth" id="cadastroEmail" placeholder="seuemail@exemplo.com">
+
+          <button class="botao-primario" id="btnContinuarEmail">Continuar com o e-mail</button>
+
+          <p class="auth-trocar">Já tem conta? <a href="#" id="irParaLoginDoEmail">Entrar</a></p>
+        </div>
+
+        <!-- VIEW: CADASTRO - SENHA -->
+        <div class="tela-auth" id="tela-cadastro-senha">
+          <div class="cabecalho-auth">
+            <img class="style-imglogo-reduzida" src="${imgPath}/Logo da NextStop com bússola (2).png" alt="Logo">
+            <h2 class="titulo-auth">Boas-vindas ao NextStop</h2>
+          </div>
+
+          <button class="botao-google">
+            <img src="${imgPath}/pngegg.png" alt="">
+            Continue com o Google
+          </button>
+
+          <div class="divisor">ou</div>
+
+          <label class="rotulo-auth">SENHA</label>
+          <input type="password" class="campo-auth" placeholder="••••••••••••••">
+
+          <label class="rotulo-auth">Confirme a senha</label>
+          <input type="password" class="campo-auth" placeholder="••••••••••••••">
+
+          <button class="botao-primario" id="btnCadastrar">Cadastrar</button>
+
+          <p class="auth-trocar">Já tem conta? <a href="#" id="irParaLoginDaSenha">Entrar</a></p>
+        </div>
+
+      </div>
+    </div>
+  `;
+}

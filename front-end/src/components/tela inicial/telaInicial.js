@@ -1,4 +1,4 @@
-function iniciarFluxoAuth() {
+export function iniciarFluxoAuth() {
   const botaoExplorer = document.querySelector('.style-btn');
   const sobreposicao = document.getElementById('sobreposicaoAuth');
 
@@ -47,5 +47,4 @@ function iniciarFluxoAuth() {
     console.log('Cadastro enviado');
   });
 }
-
-document.addEventListener('DOMContentLoaded', iniciarFluxoAuth);
+
