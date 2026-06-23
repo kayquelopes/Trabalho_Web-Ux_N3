@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Components</title>
+    <link rel="stylesheet" href="../src/styles/variables.css">
+    <link rel="stylesheet" href="../src/styles/base.css">
+    <script type="module" src="../src/index.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../src/components/revisão/revisao.css">
+
+</head>
+<body>
+
+
+<div class="shell">
+
+  
+  <header>
+    
+  </header>
+
+  
+  <main>
+    <h1>Revise e continue</h1>
+
+<!-- Primeira Parte -->
+    <div class="property-card">
+      <div class="property-hero">
+        <div class="property-img-inner">
+          <img src="../src/components/revisão/img/Magnifique" alt="Casa com vista para o campo na Italia" />
+        </div>
+
+        <div class="property-info">
+          <p class="property-name">Casa com vista para o campo na Italia</p>
+          <div class="property-badges">
+            <span class="badge-rating">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="#F4A629" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              4.9
+            </span>
+            <span class="badge-host">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 2a5 5 0 1 0 0 10A5 5 0 0 0 12 2zm0 12c-5.33 0-8 2.67-8 4v2h16v-2c0-1.33-2.67-4-8-4z"/></svg>
+              Preferido dos Hóspedes
+            </span>
+          </div>
+        </div>
+      </div>
+      <!-- Primeira Parte -->
+      
+      <!-- segunda Parte -->
+      <div class="section-block">
+        <div class="section-row">
+          <div>
+            <p class="section-label">Datas:</p>
+            <div class="detail-lines">
+              <span class="detail-line">CHECK-IN: <span class="detail-value">10 / 10 / 2026</span></span>
+              <span class="detail-line">CHECK-OUT: <span class="detail-value">16 / 10 / 2026</span></span>
+            </div>
+          </div>
+          <button class="alter-btn" onclick="openModal('dates')">Alterar</button>
+        </div>
+      </div>
+      
+
+     
+      <div class="section-block">
+        <div class="section-row">
+          <div>
+            <p class="section-label">Hóspedes:</p>
+            <div class="detail-lines">
+              <span class="detail-line">ADULTO: <span class="detail-value" id="adultCount">1</span></span>
+              <span class="detail-line">CRIANÇA: <span class="detail-value" id="childCount">0</span></span>
+            </div>
+          </div>
+          <button class="alter-btn" onclick="openModal('guests')">Alterar</button>
+        </div>
+      </div>
+
+      <!-- segunda Parte -->
+
+
+      <div class="price-section">
+        <p class="price-label">Preço Total:</p>
+        <div class="price-meta">
+          <span>DIAS: 6</span>
+          <span>VALOR: R$ 450,00/NOITE</span>
+        </div>
+        <hr class="price-divider"/>
+        <p class="price-total" id="totalPrice">R$ 2.700,00 BRL</p>
+        <p class="price-installments" id="installments">ou em 12x de R$ 225,00</p>
+      </div>
+
+     
+      <div class="cancellation-strip">✓ Cancelamento gratuito</div>
+    </div>
+
+   
+    <div class="cancellation-policy">
+      Cancelamento até uma semana antes da data marcada. Receberá um reembolso integral.
+      <span class="policy-link">Política completa</span>
+    </div>
+  </main>
+
+ <!-- BOTAO PROXIMOO -->
+  <div class="cta-footer">
+    <button class="cta-btn" onclick="handleNext()">Próximo</button>
+  </div>
+</div>
+
+
+<div class="modal-backdrop" id="datesModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('dates')">×</button>
+    <h2>Alterar datas</h2>
+    <div class="date-grid">
+      <div class="date-field">
+        <label>Check-in</label>
+        <input type="date" id="checkin" value="2026-10-10" min="2026-06-22" />
+      </div>
+      <div class="date-field">
+        <label>Check-out</label>
+        <input type="date" id="checkout" value="2026-10-16" min="2026-06-23" />
+      </div>
+    </div>
+    <button class="modal-confirm" onclick="saveDates()">Confirmar datas</button>
+  </div>
+</div>
+
+
+<div class="modal-backdrop" id="guestsModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('guests')">×</button>
+    <h2>Alterar hóspedes</h2>
+
+    <div class="guest-row">
+      <div>
+        <p class="guest-type">Adultos</p>
+        <p class="guest-sub">13 anos ou mais</p>
+      </div>
+      <div class="counter">
+        <button class="counter-btn" onclick="adjustGuest('adult',-1)">−</button>
+        <span class="counter-val" id="adultModal">1</span>
+        <button class="counter-btn" onclick="adjustGuest('adult',1)">+</button>
+      </div>
+    </div>
+
+    <div class="guest-row">
+      <div>
+        <p class="guest-type">Crianças</p>
+        <p class="guest-sub">2 a 12 anos</p>
+      </div>
+      <div class="counter">
+        <button class="counter-btn" onclick="adjustGuest('child',-1)">−</button>
+        <span class="counter-val" id="childModal">0</span>
+        <button class="counter-btn" onclick="adjustGuest('child',1)">+</button>
+      </div>
+    </div>
+
+    <button class="modal-confirm" onclick="saveGuests()">Confirmar hóspedes</button>
+  </div>
+</div>
+
+
+<div class="toast" id="toast"></div>
+
+<script src="../src/components/revisão/revisao.js"></script>
+
+</body>
+</html>
