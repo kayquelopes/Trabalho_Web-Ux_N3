@@ -1,0 +1,337 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+}
+
+.container-bg {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    background-image: url("../tela inicial/img/1000502873491679770.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 32% 0 0 0;
+}
+
+.container-bg::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+    border-radius: 32% 0 0 0;
+}
+
+/* Logo no canto superior esquerdo */
+.container-imglogo {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    z-index: 2;
+}
+
+.style-imglogo {
+    width: 50px;
+    height: auto;
+}
+
+/* Título e texto centralizados na tela, alinhados à esquerda */
+.container-texto {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    width: 90%;
+    max-width: 320px;
+    text-align: left;
+    color: #fff;
+}
+
+.style-txtlogo {
+    font-size: 2rem;
+    margin-bottom: 8px;
+}
+
+.style-tagline {
+    font-size: 1rem;
+}
+
+/* Botão centralizado na parte inferior */
+.container-btn {
+    position: absolute;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+}
+
+.style-btn {
+    width: 224px;
+    padding: 12px 32px;
+    border: none;
+    border-radius: 8px;
+    background: rgb(255, 255, 255, 0.2);
+    color: #ffffff;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Sobreposição que sobe por cima da tela de fundo */
+.sobreposicao-auth {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    pointer-events: none;
+}
+
+.sobreposicao-auth.aberta {
+    pointer-events: auto;
+}
+
+.cartao-auth {
+    width: 100%;
+    max-width: 400px;
+    background: #fff;
+    border-radius: 32px 32px 0 0;
+    padding: 32px 24px;
+    box-sizing: border-box;
+    transform: translateY(100%);
+    transition: transform 0.4s ease-in-out;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.sobreposicao-auth.aberta .cartao-auth {
+    transform: translateY(0);
+}
+
+.tela-auth {
+    display: none;
+}
+
+.tela-auth.ativa {
+    display: block;
+}
+
+.cabecalho-auth {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 16px 0 24px;
+}
+
+.style-imglogo-reduzida {
+    width: 40px;
+    height: auto;
+    flex-shrink: 0;
+}
+
+.titulo-auth {
+    font-family: Georgia, 'Times New Roman', serif;
+    margin: 0;
+    color: #1a1a1a;
+}
+
+.botao-google {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background: #fff;
+    font-weight: 500;
+    cursor: pointer;
+    margin-bottom: 16px;
+}
+
+.botao-google img {
+    width: 18px;
+    height: 18px;
+}
+
+.divisor {
+    text-align: center;
+    color: #888;
+    font-size: 0.85rem;
+    margin-bottom: 16px;
+}
+
+.rotulo-auth {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: bold;
+    color: #555;
+    margin-bottom: 4px;
+}
+
+.campo-auth {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 16px;
+    border: none;
+    border-radius: 8px;
+    background: #dde3ee;
+    box-sizing: border-box;
+    font-size: 0.9rem;
+}
+
+.botao-primario {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(90deg, #1a1a6e, #6a1ab8);
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 8px;
+}
+
+.auth-trocar {
+    text-align: center;
+    font-size: 0.85rem;
+    color: #555;
+    margin-top: 16px;
+}
+
+.auth-trocar a {
+    color: #6a1ab8;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+@media (min-width: 768px) {
+    .container-texto {
+        max-width: 480px;
+    }
+
+    .style-txtlogo {
+        font-size: 2.5rem;
+    }
+
+    .style-tagline {
+        font-size: 1.1rem;
+    }
+
+    .style-imglogo {
+        width: 60px;
+    }
+
+    .container-imglogo {
+        top: 16px;
+        left: 16px;
+    }
+}
+
+/* ===================== DESKTOP ===================== */
+@media (min-width: 1024px) {
+
+    /* Tela de fundo */
+    .container-bg {
+        border-radius: 0;
+        display: flex;
+        align-items: center;
+        background-image: url("../tela inicial/img/The most favorable time to see Paris landmarks is….jpg");
+    }
+
+    .container-bg::before {
+        border-radius: 0;
+    }
+
+    .container-imglogo {
+        top: 24px;
+        left: 32px;
+    }
+
+    .style-imglogo {
+        width: 70px;
+    }
+
+    .container-texto {
+        left: 50%;
+        transform: translate(-50%, -50%);
+        max-width: 600px;
+    }
+
+    .style-txtlogo {
+        font-size: 4rem;
+        text-align: center;
+    }
+
+    .style-tagline {
+        font-size: 1.4rem;
+        text-align: center;
+    }
+
+    .container-btn {
+        left: 50%;
+        bottom: 48px;
+        transform: translateX(-50%);
+    }
+
+    .style-btn {
+        width: 240px;
+        padding: 16px 32px;
+        font-size: 1.05rem;
+        transition: background 0.3s ease;
+    }
+
+    .style-btn:hover {
+        background: rgba(255, 255, 255, 0.35);
+    }
+
+    /* Overlay de autenticação como modal centralizado */
+    .sobreposicao-auth {
+        align-items: center;
+        background: rgba(0, 0, 0, 0.5);
+    }
+
+    .cartao-auth {
+        max-width: 440px;
+        border-radius: 24px;
+        padding: 40px 40px;
+        transform: translateY(40px) scale(0.96);
+        opacity: 0;
+        transition: transform 0.35s ease-in-out, opacity 0.35s ease-in-out;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        max-height: 85vh;
+    }
+
+    .sobreposicao-auth.aberta .cartao-auth {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+
+    .titulo-auth {
+        font-size: 1.6rem;
+    }
+
+    .botao-google,
+    .botao-primario {
+        cursor: pointer;
+        transition: opacity 0.2s ease;
+    }
+
+    .botao-google:hover {
+        background: #f5f5f5;
+    }
+
+    .botao-primario:hover {
+        opacity: 0.9;
+    }
+}
