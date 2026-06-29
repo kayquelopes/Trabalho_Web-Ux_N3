@@ -8,7 +8,7 @@ body {
     position: relative;
     width: 100%;
     min-height: 100vh;
-    background-image: url("../tela inicial/img/1000502873491679770.jpg");
+    background-image: url("img/1000502873491679770.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -246,7 +246,7 @@ body {
         border-radius: 0;
         display: flex;
         align-items: center;
-        background-image: url("../tela inicial/img/The most favorable time to see Paris landmarks is….jpg");
+        background-image: url("img/bg-desktop.jpg");
     }
 
     .container-bg::before {

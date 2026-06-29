@@ -1,18 +1,16 @@
-// Caminho do CSS específico desta página
-// (relativo a partir de public/index.html, pois é o <link> que será
-// inserido no <head> do documento, e não do módulo JS)
-export const telaInicialCss = "../src/components/tela inicial/telaInicial.css";
+// Caminhos das imagens, resolvidos a partir da localização deste módulo
+// (igual ao professor faz com o CSS do header, usando import.meta.url)
+const imgLogo = new URL('./img/logo.png', import.meta.url).href;
+const imgGoogle = new URL('./img/logoG.png', import.meta.url).href;
 
-// Template (HTML em string) da página "Tela Inicial"
-// Recebe o caminho base das imagens, para funcionar tanto
-// se for carregado pela raiz quanto por /public.
-export function telaInicialTpl() {
-  const imgPath = "../src/components/tela inicial/img";
+const template = document.createElement('template');
 
-  return `
+template.innerHTML = `
+    <link rel="stylesheet" href="${new URL('./telaInicial.css', import.meta.url).href}">
+
     <div class="container-bg">
       <div class="container-imglogo">
-        <img class="style-imglogo" src="${imgPath}/Logo da NextStop com bússola (2).png" alt="Logo">
+        <img class="style-imglogo" src="${imgLogo}" alt="Logo">
       </div>
 
       <div class="container-texto">
@@ -31,12 +29,12 @@ export function telaInicialTpl() {
         <!-- VIEW: LOGIN -->
         <div class="tela-auth ativa" id="tela-login">
           <div class="cabecalho-auth">
-            <img class="style-imglogo-reduzida" src="${imgPath}/Logo da NextStop com bússola (2).png" alt="Logo">
+            <img class="style-imglogo-reduzida" src="${imgLogo}" alt="Logo">
             <h2 class="titulo-auth">Faça login no NextStop</h2>
           </div>
 
           <button class="botao-google">
-            <img src="${imgPath}/pngegg.png" alt="">
+            <img src="${imgGoogle}" alt="">
             Continue com o Google
           </button>
 
@@ -56,12 +54,12 @@ export function telaInicialTpl() {
         <!-- VIEW: CADASTRO - EMAIL -->
         <div class="tela-auth" id="tela-cadastro-email">
           <div class="cabecalho-auth">
-            <img class="style-imglogo-reduzida" src="${imgPath}/Logo da NextStop com bússola (2).png" alt="Logo">
+            <img class="style-imglogo-reduzida" src="${imgLogo}" alt="Logo">
             <h2 class="titulo-auth">Boas-vindas ao NextStop</h2>
           </div>
 
           <button class="botao-google">
-            <img src="${imgPath}/pngegg.png" alt="">
+            <img src="${imgGoogle}" alt="">
             Continue com o Google
           </button>
 
@@ -78,12 +76,12 @@ export function telaInicialTpl() {
         <!-- VIEW: CADASTRO - SENHA -->
         <div class="tela-auth" id="tela-cadastro-senha">
           <div class="cabecalho-auth">
-            <img class="style-imglogo-reduzida" src="${imgPath}/Logo da NextStop com bússola (2).png" alt="Logo">
+            <img class="style-imglogo-reduzida" src="${imgLogo}" alt="Logo">
             <h2 class="titulo-auth">Boas-vindas ao NextStop</h2>
           </div>
 
           <button class="botao-google">
-            <img src="${imgPath}/pngegg.png" alt="">
+            <img src="${imgGoogle}" alt="">
             Continue com o Google
           </button>
 
@@ -102,5 +100,70 @@ export function telaInicialTpl() {
 
       </div>
     </div>
-  `;
+`;
+
+class TelaInicialComponent extends HTMLElement {
+  constructor() {
+    super();
+    this.attachShadow({ mode: 'open' });
+    this.shadowRoot.appendChild(template.content.cloneNode(true));
+  }
+
+  connectedCallback() {
+    this.iniciarFluxoAuth();
+  }
+
+  iniciarFluxoAuth() {
+    const root = this.shadowRoot;
+
+    const botaoExplorer = root.querySelector('.style-btn');
+    const sobreposicao = root.getElementById('sobreposicaoAuth');
+
+    const telas = {
+      login: root.getElementById('tela-login'),
+      cadastroEmail: root.getElementById('tela-cadastro-email'),
+      cadastroSenha: root.getElementById('tela-cadastro-senha'),
+    };
+
+    function mostrarTela(chave) {
+      Object.values(telas).forEach(t => t.classList.remove('ativa'));
+      telas[chave].classList.add('ativa');
+    }
+
+    function abrirSobreposicao(chave) {
+      mostrarTela(chave);
+      sobreposicao.classList.add('aberta');
+    }
+
+    botaoExplorer.addEventListener('click', () => abrirSobreposicao('login'));
+
+    root.getElementById('irParaCadastroEmail').addEventListener('click', (e) => {
+      e.preventDefault();
+      mostrarTela('cadastroEmail');
+    });
+
+    root.getElementById('btnContinuarEmail').addEventListener('click', () => {
+      mostrarTela('cadastroSenha');
+    });
+
+    root.getElementById('irParaLoginDoEmail').addEventListener('click', (e) => {
+      e.preventDefault();
+      mostrarTela('login');
+    });
+
+    root.getElementById('irParaLoginDaSenha').addEventListener('click', (e) => {
+      e.preventDefault();
+      mostrarTela('login');
+    });
+
+    root.getElementById('btnFazerLogin').addEventListener('click', () => {
+      console.log('Login enviado');
+    });
+
+    root.getElementById('btnCadastrar').addEventListener('click', () => {
+      console.log('Cadastro enviado');
+    });
+  }
 }
+
+export { TelaInicialComponent };
